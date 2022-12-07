@@ -10,7 +10,7 @@ String cookieCheck = "";
 //앞에서 읽은 쿠키값이 있다면 체크박스에 checked속성을 부여하기위해
 //값을 설정한다. 
 if(!loginId.equals("")){
-	cookieCheck = " checked";
+	cookieCheck = "checked";
 }
 %>
 <!DOCTYPE html>
@@ -29,13 +29,12 @@ if(!loginId.equals("")){
 	쿠키를 통해 읽어온 값이 있는 경우 text상자에는 value속성을
 	통해 저장된 아이디를 추가하고, checkbox에는 checked속성을
 	부여한다.
-	tabindex : 탭을눌러 다음 입력란으로 옮겨질때 순서를 정해줄수있음
 	-->
-	아이디 : <input type="text" name="user_id"  value="<%=loginId %>">
-		<input type="checkbox" name="save_check" value="Y"<%= cookieCheck %> >
+	아이디 : <input type="text" name="user_id"  value="<%=loginId %>" tabindex="1">
+		<input type="checkbox" name="save_check" value="Y"<%= cookieCheck %> tabindex="3" >
 		아이디 저장하기
 	<br />
-	패스워드 : <input type="text" name="user_pw" >
+	패스워드 : <input type="text" name="user_pw" tabindex="2">
 	<br />
 	<input type="submit" value="로그인하기">
 	</form>
