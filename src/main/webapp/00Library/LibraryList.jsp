@@ -112,7 +112,8 @@ else {
    
     <table border="1" width="90%">
         <tr align="right">
-            <td><button type="button" onclick="location.href='Write.jsp';">글쓰기
+            <td><button type="button" onclick="location.href='LibraryWrite.jsp';">책추가
+            
                 </button></td>
         </tr>
     </table>
