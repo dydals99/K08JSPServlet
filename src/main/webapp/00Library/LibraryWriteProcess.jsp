@@ -13,17 +13,17 @@ String code = request.getParameter("book_code");
 String genre = request.getParameter("book_genre");
 String title = request.getParameter("book_title");
 String author = request.getParameter("book_author");
-String Status = request.getParameter("book_Status");
+String status = request.getParameter("book_status");
 
 //폼값을 DTO객체에 저장한다.
 LibaryDTO dto = new LibaryDTO();
-/* 
-dto.setBook_code();
-dto.setBook_genre();
-dto.setBook_title();
-dto.setBook_author();
-dto.setBook_Status();
-*/
+
+dto.setBook_code(code);
+dto.setBook_genre(genre);
+dto.setBook_title(title);
+dto.setBook_author(author);
+dto.setBook_Status(status);
+
 //DB연결을 위해 DAO객체를 생성한다.
 LibaryDAO dao = new LibaryDAO();
 //입력값이 저장된 DTO객체를 인수로 전달하여 insert쿼리문을 실행한다.

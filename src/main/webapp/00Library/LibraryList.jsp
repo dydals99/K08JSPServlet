@@ -20,6 +20,10 @@ if(searchWord != null){
 }
 int totalCount = dao.selectCount(param);
 List<LibaryDTO> boardLists = dao.selectList(param);
+
+
+//List<CommonDTO> commonLists = dao.selectListCommon();
+
 dao.close();
 %>
 <%-- <% 
@@ -96,13 +100,27 @@ else {
             <!-- 책 코드 -->  
             <td align="center"><%= dto.getBook_code() %></td>
             <!-- 책 장르 -->
-            <td align="center"><%= dto.getBook_genre() %></td>
+            <td align="center">
+            <select name="genre" disabled>
+            <option value ="01" <%= dto.getBook_genre().equals("01") ? "selected" : ""  %>>무협</option>
+            <option value ="02" <%= dto.getBook_genre().equals("02") ? "selected" : ""  %>>판타지</option>
+            <option value ="03" <%= dto.getBook_genre().equals("03") ? "selected" : ""  %>>교육</option>
+			</select>                       
+            </td>
             <!-- 책 제목 -->
             <td align="center"><%= dto.getBook_title() %></td>
             <!-- 작 가 -->           
             <td align="center"><%= dto.getBook_author() %></td>   
             <!-- 책 상태 -->
-            <td align="center"><%= dto.getBook_Status() %></td>    
+            <td align="center"><%= dto.getBook_Status() %></td>   
+          <%--   <select name="book_status" disabled>
+            <option value ="B101" <%= dto.getBook_Status().equals("B101") ? "selected" : ""  %>>대여가능</option>
+            <option value ="B102" <%= dto.getBook_Status().equals("B102") ? "selected" : ""  %>>대여중</option>
+            <option value ="B103" <%= dto.getBook_Status().equals("B103") ? "selected" : ""  %>>대여불가</option>
+			</select>     --%>
+			
+            
+            
         </tr>
 <%
     }

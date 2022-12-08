@@ -81,7 +81,7 @@ public class LibaryDAO extends LibConnect{
 		
 		try {
 			//동적 쿼리문 작성
-			String query = "INSERT INTO board (" 
+			String query = "INSERT INTO LIBRARY (" 
 				+	" book_code,book_genre,book_title,book_author,book_status) " 
 				+	" VALUES ( "
 				+	" ?, ?, ?, ?, ?) ";
@@ -101,5 +101,10 @@ public class LibaryDAO extends LibConnect{
 			e.printStackTrace();
 		}
 		return result;
+	}
+	public LibaryDTO selectView(String code) {
+		LibaryDTO dto = new LibaryDTO();
+		
+		return dto;
 	}
 }
