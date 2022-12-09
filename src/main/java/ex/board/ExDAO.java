@@ -3,11 +3,8 @@ package ex.board;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-
 import javax.servlet.ServletContext;
-
 import common.JDBConnect;
-import model1.board.BoardDTO;
 
 public class ExDAO extends JDBConnect{
 	
@@ -85,5 +82,112 @@ public class ExDAO extends JDBConnect{
 			e.printStackTrace();
 		}
 		return bbs;
+	}
+	public int insertWrite(ExDTO dto) {
+		int result = 0;
+		
+		try {
+			String query = "INSERT INTO board (" 
+				+	" num,title,content,id,visitcount) " 
+				+	" VALUES ( "
+				+	" seq_board_num.NEXTVAL, ?, ?, ?, 0) ";
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getContent());
+			psmt.setString(3, dto.getId());
+			result = psmt.executeUpdate();
+			
+		}
+		catch(Exception e) {
+			System.out.println("게시물 입력 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public ExDTO selectView(String num) {
+		ExDTO dto = new ExDTO();
+		
+		//멤버변수로 생성한 name컬럼을 가져오기위해 내부조인을 함 
+		String query = "SELECT B.*, M.name "
+				+ "     FROM board B "
+				+ "     INNER join member M "
+				+ "     ON B.id = M.id  "
+				+ "     WHERE num = ? ";
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, num);
+			rs = psmt.executeQuery();
+			//일련번호는 primary key이기때문에 중복이 안됨 고로 if문을 사용
+			if(rs.next()) {
+				dto.setNum(rs.getString(1));
+				dto.setTitle(rs.getString(2));
+				dto.setContent(rs.getString("Content"));
+				dto.setPostdate(rs.getDate("Postdate"));
+				dto.setId(rs.getString("id"));
+				dto.setVisitcount(rs.getString(6));
+				dto.setName(rs.getString("name"));
+			}
+		}
+		catch(Exception e) {
+			System.out.println("게시물 상세보기 중 예외발생");
+			e.printStackTrace();
+		}
+		return dto;
+	}
+	public void updateVisitCount(String num) {
+		/*
+		게시물의 일련번호를 통해 visitcount를 1증가 시킨다.
+		해당 컬럼은 number타입이므로 사칙연산이 가능하다.
+		*/
+		String query = " UPDATE board SET "
+				+ " visitcount=visitcount+1 "
+				+ " WHERE num=? ";
+		try {
+			psmt= con.prepareStatement(query);
+			psmt.setString(1, num);
+			psmt.executeQuery();
+		}
+		catch(Exception e) {
+			System.out.println("게시물 조회수 증가 중 예외발생");
+			e.printStackTrace();
+		}
+	}
+	public int updateEdit(ExDTO dto) {
+		int result = 0;
+		//특정 일련번호에 해당하는 게시물을 수정한다.
+		try {
+			String query = "UPDATE board SET "
+					+ "title = ?, content = ? "
+					+ "where num = ?";
+			psmt = con.prepareStatement(query);
+			
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getContent());
+			psmt.setString(3, dto.getNum());
+			//수정된 레코드의 갯수가 반환된다.
+			result = psmt.executeUpdate();
+		}
+		catch(Exception e) {
+			System.out.println("게시물 수정 중 예외발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public int deletePost(ExDTO dto) {
+		int result = 0;
+		
+		try {
+			String query = "DELETE FROM board WHERE num = ? ";
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getNum());
+			
+			result = psmt.executeUpdate();
+			
+		}
+		catch(Exception e) {
+			System.out.println("게시물 삭제 중 예외발생");
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

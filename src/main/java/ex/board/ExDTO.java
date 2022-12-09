@@ -8,6 +8,7 @@ public class ExDTO {
 	private java.sql.Date postdate;
 	private String visitcount;
 	private String name;
+	
 	public String getNum() {
 		return num;
 	}

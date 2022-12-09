@@ -38,6 +38,18 @@ dao.close();
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
+
+<script type="text/javascript">
+//ajax를 사용해서 DB에서 책 장르별 책 코드의 최대값을 가져온다.
+$.ajax({
+
+	
+})
+
+
+</script>
 </head>
 <body>
 	<!-- 공통링크 -->
@@ -112,13 +124,13 @@ else {
             <!-- 작 가 -->           
             <td align="center"><%= dto.getBook_author() %></td>   
             <!-- 책 상태 -->
-            <td align="center"><%= dto.getBook_Status() %></td>   
-          <%--   <select name="book_status" disabled>
+            <td align="center"><%-- <%= dto.getBook_Status() %>   --%>
+            <select name="book_status" disabled>
             <option value ="B101" <%= dto.getBook_Status().equals("B101") ? "selected" : ""  %>>대여가능</option>
             <option value ="B102" <%= dto.getBook_Status().equals("B102") ? "selected" : ""  %>>대여중</option>
             <option value ="B103" <%= dto.getBook_Status().equals("B103") ? "selected" : ""  %>>대여불가</option>
-			</select>     --%>
-			
+			</select>
+			</td> 
             
             
         </tr>
