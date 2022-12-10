@@ -46,15 +46,16 @@
 				  }
 				  </script>
 				  <h2 style="text-align: center; font-weight: bold ">TJOEUN LOGIN</h2>
-				  <div class="container mt-3 d-flex justify-content-center" method="post" name="loginFrm" 
-						 onsubmit="return validateForm(this);">
-					  <form action="boardList.jsp" >
+				  <div class="container mt-3 d-flex justify-content-center" method="post" name="loginFrm"
+					   	onsubmit="return validateForm(this);"
+						>
+					  <form action="ExLoginProcess.jsp"   >
 					    <div class="mb-2 mt-2" >
 					      <input type="text" class=" form-control"
 					      	placeholder="아이디" name="user_id" style="width:300px;">
 					    </div >
 					    <div class="mb-3">
-					      <input type="password" class="form-control" id="pwd" 
+					      <input type="password" class="form-control" 
 					      	placeholder="비밀번호" name="user_pw" style="width:300px;">
 					    </div>
 					    <div class="mb-5">
@@ -79,7 +80,7 @@
 				  %>
 				     <!-- <a href="boardList.jsp">홈으로</a> -->
 				     
-				     <%-- <%=session.getAttribute("UserName")%>님, 환영합니다.  --%>
+				     <%=session.getAttribute("UserName")%>님, 환영합니다.
 				  <%
 				  }
 				  %>

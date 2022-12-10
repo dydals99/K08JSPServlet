@@ -1,5 +1,13 @@
+<%@page import="ex.board.MbDTO"%>
+<%@page import="ex.board.MbDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String id = request.getParameter("id");
+MbDAO dao = new MbDAO(application);
+MbDTO dto = dao.selectMember(id); 
+dao.close(); 
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,25 +21,6 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">    
-<script type="text/javascript">
-function validateForm(form) {  
-	if(form.id.value==""){
-		alert("작성자를 입력하세요");
-	   form.id.focus();
-		return false;
-	}
-    if (form.pass.value == "") {
-        alert("제목을 입력하세요.");
-        form.pass.focus();
-        return false;
-    }
-    if (form.name.value == "") {
-        alert("내용을 입력하세요.");
-        form.name.focus();
-        return false;
-    }
-}
-</script>   
 </head>
 <body>
 <div class="container">
@@ -44,26 +33,29 @@ function validateForm(form) {
 	       <%@ include file="./inc/left.jsp" %>
 	       <div class="col-9 pt-3">
 	            <div class="row ">
-				  <h2 style="text-align: center; font-weight: bold ">회원가입</h2>
+	       
+				  <h2 style="text-align: center; font-weight: bold ">회원정보수정</h2>
+				  
 				  <div class="container mt-3 d-flex justify-content-center" 
-				  	method="post" onsubmit="return validateForm(this);" name="member">
-					  <form action="ExmembershipProcess.jsp">
+				  	method="post" name="member">
+					  <form name="updateFrm">
 					    <div class="mb-3" >
 					      <input type="text" class=" form-control"
-					      	placeholder="아이디" name="id" style="width:300px;">
+					      	value="<%=dto.getId() %>"  style="width:300px;">
 					    </div >
 					    <div class="mb-3">
 					      <input type="password" class="form-control" 
-					      	placeholder="비밀번호" name="pass" style="width:300px;">
+					      	value="<%=dto.getPass() %>" style="width:300px;">
 					    </div>
 					    <div class="mb-3">
 					      <input type="text" class="form-control" 
-					      	placeholder="회원이름" name="name" style="width:300px;">
+					      	value="<%=dto.getName() %>"  style="width:300px;">
 					    </div>
 					    
 					    <div class="mb-5">
-					    <button type="submit" class="btn btn-primary" style=" width:300px;"
-					     >회원가입</button>
+					    <button type="button" class="btn btn-primary" style=" width:300px;"
+					    onclick="location.href='ExUpdateMember.jsp?id=<%=dto.getId() %>';"
+					     >수정하기</button> 
 					    <hr />
 					    </div>
 					  </form>

@@ -16,7 +16,7 @@
         	/* session영역에 저장된 속성값이 있다면 로그인 된
         	상태이므로 회원정보 및 로그아웃 버튼을 화면에 출력한다. */
         %>
-			<a href="#"><i
+			<a href="../homework/ExUpdateMemberView.jsp"><i
 					class='bi bi-person-lines-fill' style='font-size: 20px'></i>회원정보수정</a>
             <a href="../homework/ExLogout.jsp"><i
 					class='bi bi-box-arrow-right' style='font-size: 20px'></i>로그아웃</a>
