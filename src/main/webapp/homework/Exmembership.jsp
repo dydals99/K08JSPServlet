@@ -44,7 +44,7 @@ function validateForm(form) {
 	       <%@ include file="./inc/left.jsp" %>
 	       <div class="col-9 pt-3">
 	            <div class="row ">
-				  <h2 style="text-align: center; font-weight: bold ">회원가입</h2>
+				  <h2 style="text-align: center; font-weight: bold ">회원가입<i class="bi bi-door-open"></i></h2>
 				  <div class="container mt-3 d-flex justify-content-center" 
 				  	>
 					  <form action="ExmembershipProcess.jsp"
