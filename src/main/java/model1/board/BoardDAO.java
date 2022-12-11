@@ -220,6 +220,7 @@ public class BoardDAO extends JDBConnect {
 			e.printStackTrace();
 		}
 		return result;
+		
 	}
 	
 	

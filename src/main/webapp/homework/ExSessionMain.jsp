@@ -4,16 +4,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-//세션유지시간 설정1(메서드사용) : 초단위로 설정한다.
-//session.setMaxInactiveInterval(1000);
 
-//시간 서식 지정
 SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
-//세션 생성 시간
 long creationTime = session.getCreationTime();
 String creationTimeStr = dateFormat.format(new Date(creationTime));
-//마지막으로 세션을 요청한 시간
+
 long lastTime = session.getLastAccessedTime();
 String lastTimeStr = dateFormat.format(new Date(lastTime));
 %>
@@ -24,11 +20,6 @@ String lastTimeStr = dateFormat.format(new Date(lastTime));
 </head>
 <body>
 	<h2>Session 설정 확인</h2>
-	<!-- 
-	세션 유지 시간은 별도의 설정이 없으면 30분(1000초)로 지정된다.
-	web.xml에서 <session-config> 엘리먼트를 통해 분 단위로 지정할
-	수 있다.
-	-->
 	<ul>
 		<li>세션 유지시간 : <%=session.getMaxInactiveInterval() %> </li>
 		<li>세션 아이디 : <%=session.getId() %></li>

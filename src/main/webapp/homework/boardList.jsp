@@ -100,13 +100,9 @@ dao.close();
 						<%
 						}
 						else {
-							//출력할 게시물이 있는 경우에는 확장 for문으로 List 컬렉션에 
-							//저장된 데이터의 갯수만큼 반복하여 출력한다.
 						    int virtualNum = 0; 
 						    for (ExDTO dto : boardLists)
 						    {
-						    	//현재 출력할 게시물의 갯수에 따라 출력번화는 달라지므로
-						    	//totalCount를 사용하여 가상번호를 부여한다.
 						        virtualNum = totalCount--;   
 						%>
 						        <tr align="center">
@@ -127,17 +123,6 @@ dao.close();
 						    }
 						}
 						%>
-                      <%--   <%for(int i=1 ; i<=5 ; i++){ %>
-                        <!-- 리스트반복 -->
-                        <tr>
-                            <td class="text-center"><%=i %></td>
-                            <td class="text-left"><a href="boardView.html">제목</a></td>
-                            <td class="text-center">작성자</td>
-                            <td class="text-center">작성일</td>
-                            <td class="text-center">조회수</td>
-                            <td class="text-center"><i class="bi bi-pin-angle-fill" style="font-size:20px"></i></td>
-                        </tr>
-                        <% } %>  --%>
                     </tbody>
                 </table>
             </div>

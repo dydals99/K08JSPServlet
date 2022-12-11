@@ -80,11 +80,6 @@ function validateForm(form) {
                    </td>
                 </tr>
                 <tr>
-                   <!--  <th class="text-center" 
-                        style="vertical-align:middle;">이메일</th>
-                    <td>
-                        whdydals0802@naver.com
-                    </td> -->
                     <th class="text-center" 
                         style="vertical-align:middle;">조회수</th>
                     <td>

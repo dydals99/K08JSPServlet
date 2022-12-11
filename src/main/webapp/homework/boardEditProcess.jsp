@@ -23,10 +23,7 @@ int affected = dao.updateEdit(dto);
 dao.close();
 
 if(affected == 1){
-	/* 
-	수정이 완료되었으면 수정된 내용을 확인하기 위해 주로 
-	내용보기 페이지로 이동한다.
-	*/
+	
 	response.sendRedirect("boardView.jsp?num=" + dto.getNum());
 }
 else{

@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div class="col-12">
-	<!-- 
-		.bg-primary, .bg-success, .bg-info, .bg-warning, .bg-danger, .bg-secondary, 
-		.bg-dark, .bg-light
-	-->
 	<nav class="navbar navbar-expand-sm bg-warning navbar-secondary">
-		<!-- Brand/logo -->
+	
 		<a class="navbar-brand" href="../homework/boardList.jsp"> <img
 			src="https://tjoeun.co.kr/images/logo.gif?v=20190918"
 			style="width: 150px;">
 		</a>
 
-		<!-- Links -->
 		<ul class="navbar-nav ms-3">
 			<li class="nav-item"><a class="nav-link" href="#">자유게시판</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">자료실</a></li>
@@ -39,16 +34,6 @@
 
 		<ul class="navbar-nav ms-auto">
 			<%@include file="../../Common/ExLink.jsp" %>
-			<!-- <li class="nav-item"><a class="nav-link" href="#"><i
-					class='bi bi-person-plus-fill' style='font-size: 20px'></i>회원가입</a></li>
-			<li class="nav-item"><a class="nav-link" href="#"><i
-					class='bi bi-person-lines-fill' style='font-size: 20px'></i>회원정보수정</a>
-			</li> -->
-			<!-- <li class="nav-item"><a class="nav-link" href="#"><i
-					class='bi bi-box-arrow-in-right' style='font-size: 20px'>로그인</i></a></li>
-			
-			<li class="nav-item"><a class="nav-link" href="#"><i
-					class='bi bi-box-arrow-right' style='font-size: 20px'></i>로그아웃</a></li> -->
 		</ul>
 	</nav>
 </div>

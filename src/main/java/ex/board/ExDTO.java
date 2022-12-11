@@ -8,6 +8,7 @@ public class ExDTO {
 	private java.sql.Date postdate;
 	private String visitcount;
 	private String name;
+	private String pass;
 	
 	public String getNum() {
 		return num;
@@ -50,6 +51,12 @@ public class ExDTO {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 	
 	

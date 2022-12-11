@@ -21,12 +21,12 @@ function validateForm(form) {
 		return false;
 	}
     if (form.pass.value == "") {
-        alert("제목을 입력하세요.");
+        alert("비밀번호를 입력하세요.");
         form.pass.focus();
         return false;
     }
     if (form.name.value == "") {
-        alert("내용을 입력하세요.");
+        alert("사용자명을 입력하세요.");
         form.name.focus();
         return false;
     }
@@ -46,8 +46,9 @@ function validateForm(form) {
 	            <div class="row ">
 				  <h2 style="text-align: center; font-weight: bold ">회원가입</h2>
 				  <div class="container mt-3 d-flex justify-content-center" 
-				  	method="post" onsubmit="return validateForm(this);" name="member">
-					  <form action="ExmembershipProcess.jsp">
+				  	>
+					  <form action="ExmembershipProcess.jsp"
+					  	method="post" onsubmit="return validateForm(this);" name="member">
 					    <div class="mb-3" >
 					      <input type="text" class=" form-control"
 					      	placeholder="아이디" name="id" style="width:300px;">

@@ -20,9 +20,7 @@ int iResult = dao.insertMember(dto);
 dao.close();
  
 if(iResult == 1){
-	
-	JSFunction.alertLocation("회원가입 성공", "boardList.jsp", out);
-	/* response.sendRedirect("boardList.jsp"); */
+	JSFunction.alertLocation("회원가입 성공", "ExLoginForm.jsp", out); 
 }
 else{
 	

@@ -40,31 +40,22 @@ public class ExDAO extends JDBConnect{
 	}
 	public List<ExDTO> selectList(Map<String, Object> map) {
 		
-		// List계열의 컬렉션을 생성한다. 이때 타입 매개변수는
-		// BoardDTO객체로 설정한다.
-		// 게시판 목록은 출력 순서가 보장되야 하므로 Set컬렉션은
-		// 사용할 수 없고 List컬렉션을 사용해야한다.
 		List<ExDTO> bbs = new Vector<ExDTO>();
 		
-		// 레코드 추출을 위한 select쿼리문 작성
 		String query = "SELECT * FROM board ";
 		if (map.get("searchWord") != null) {
 			query += "WHERE " + map.get("searchField") + " " + " LIKE '%" + map.get("searchWord") + "%' ";
 		}
-		// 최근게시물을 상단에 노출하기 위해 내림차순으로 정렬한다.
 		query += "ORDER BY num DESC ";
 		
 		try {
-			// 쿼리실행 및 결과값 반환
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
-			// 2개 이상의 레코드가 반환될수 있으므로 while문을 사용
-			// 갯수만큼 반복하게 된다.
+			
 			while (rs.next()) {
-				// 하나의 레코드를 저장할 수 있는 DTO객체를 생성
+				
 				ExDTO dto = new ExDTO();
 				
-				// setter()를 이용해서 각 컬럼의 값을 저장
 				dto.setNum(rs.getString("num"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
@@ -72,7 +63,6 @@ public class ExDAO extends JDBConnect{
 				dto.setId(rs.getString("id"));
 				dto.setVisitcount(rs.getString("visitcount"));
 				
-				// List컬렉션에 DTO객체를 추가한다.
 				bbs.add(dto);
 			}
 			
@@ -117,7 +107,7 @@ public class ExDAO extends JDBConnect{
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, num);
 			rs = psmt.executeQuery();
-			//일련번호는 primary key이기때문에 중복이 안됨 고로 if문을 사용
+			
 			if(rs.next()) {
 				dto.setNum(rs.getString(1));
 				dto.setTitle(rs.getString(2));
@@ -135,10 +125,7 @@ public class ExDAO extends JDBConnect{
 		return dto;
 	}
 	public void updateVisitCount(String num) {
-		/*
-		게시물의 일련번호를 통해 visitcount를 1증가 시킨다.
-		해당 컬럼은 number타입이므로 사칙연산이 가능하다.
-		*/
+		
 		String query = " UPDATE board SET "
 				+ " visitcount=visitcount+1 "
 				+ " WHERE num=? ";
@@ -154,7 +141,7 @@ public class ExDAO extends JDBConnect{
 	}
 	public int updateEdit(ExDTO dto) {
 		int result = 0;
-		//특정 일련번호에 해당하는 게시물을 수정한다.
+		
 		try {
 			String query = "UPDATE board SET "
 					+ "title = ?, content = ? "
@@ -190,4 +177,5 @@ public class ExDAO extends JDBConnect{
 		}
 		return result;
 	}
+	
 }
