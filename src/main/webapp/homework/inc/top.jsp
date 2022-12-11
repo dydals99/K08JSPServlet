@@ -21,11 +21,11 @@
 				</div></li>
 		</ul>
 
-		<form class="form-inline mt-3 ms-3" method="get" action="">
+		<form class="form-inline mt-3 ms-3" method="get">
 			<div class="input-group mb-3">
 				<input type="text" class="form-control" placeholder="Search">
 				<div class="input-group-append">
-					<button class="btn btn-danger" type="submit">
+					<button class="btn btn-success" type="submit">
 						<i class='bi bi-search' style='font-size: 20px'></i>
 					</button>
 				</div>
