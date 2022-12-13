@@ -37,7 +37,7 @@ public class MbDAO extends JDBConnect {
 		int result = 0;
 		
 		String query = " UPDATE member SET "
-				+ " pass = ? ,name = ? "
+				+ " pass = ? ,name = ? ,revisiondate=sysdate "
 				+ " WHERE id = ? ";
 		try {
 			psmt = con.prepareStatement(query);

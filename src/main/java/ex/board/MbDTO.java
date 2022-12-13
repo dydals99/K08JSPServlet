@@ -5,7 +5,14 @@ public class MbDTO {
 	private String pass;
 	private String name;
 	private String regidate;
+	private java.sql.Date revisiondate;
 	
+	public java.sql.Date getRevisiondate() {
+		return revisiondate;
+	}
+	public void setRevisiondate(java.sql.Date revisiondate) {
+		this.revisiondate = revisiondate;
+	}
 	public String getId() {
 		return id;
 	}

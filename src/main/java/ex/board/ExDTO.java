@@ -6,6 +6,7 @@ public class ExDTO {
 	private String content;
 	private String id;
 	private java.sql.Date postdate;
+	private java.sql.Date revisiondate;
 	private String visitcount;
 	private String name;
 	private String pass;
@@ -58,6 +59,12 @@ public class ExDTO {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	
+	//수정일 게터세터
+	public java.sql.Date getRevisiondate() {
+		return revisiondate;
+	}
+	public void setRevisiondate(java.sql.Date revisiondate) {
+		this.revisiondate = revisiondate;
+	}
 	
 }

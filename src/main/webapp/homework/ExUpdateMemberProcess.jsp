@@ -7,6 +7,7 @@
 String id = request.getParameter("id");
 String pass = request.getParameter("pass");
 String name = request.getParameter("name");
+String date = request.getParameter("date");
 
 MbDTO dto = new MbDTO();
 dto.setId(id);

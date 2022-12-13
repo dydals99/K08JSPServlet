@@ -63,19 +63,27 @@ function deletePost() {
                     <th class="text-center" 
                         style="vertical-align:middle;">작성일</th>
                    <td>
-                   		<%= dto.getPostdate() %>
+                   		<%= dto.getPostdate() %> <br />
+                   		
                    </td>
                 </tr>
                 <tr>
                     <th class="text-center" 
-                        style="vertical-align:middle;">이메일</th>
-                    <td>
-                        whdydals0802@naver.com
-                    </td>
-                    <th class="text-center" 
                         style="vertical-align:middle;">조회수</th>
                     <td>
                     	<%= dto.getVisitcount() %>
+                    </td>
+                    <th class="text-center" 
+                        style="vertical-align:middle;">최종 수정일</th>
+                    <td>
+                    <%
+                    if(dto.getRevisiondate()!=null){
+                    	
+                    %>
+                   		<%= dto.getRevisiondate()%>  <br />
+                   	<%
+                    }
+                   	%>	
                     </td>
                 </tr>
                 <tr>
@@ -84,6 +92,7 @@ function deletePost() {
                     <td colspan="3">
                     	<%= dto.getTitle() %>
                     </td>
+                   
                 </tr>
                 <tr>
                     <th class="text-center" 

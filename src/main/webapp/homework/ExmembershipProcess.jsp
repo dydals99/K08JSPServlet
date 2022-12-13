@@ -6,11 +6,13 @@
 <%
 String id = request.getParameter("id");
 String pass = request.getParameter("pass");
+String pass2 = request.getParameter("pass2");
 String name = request.getParameter("name");
 
 MbDTO dto = new MbDTO();
 dto.setId(id);
 dto.setPass(pass);
+dto.setPass(pass2);
 dto.setName(name);
 
 MbDAO dao = new MbDAO(application);

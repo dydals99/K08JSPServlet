@@ -105,7 +105,7 @@ function validateForm(form) {
             <div class="row">
                 <div class="col text-right mb-4">
                     <!-- 각종 버튼 부분 -->
-                    <button type="submit" class="btn btn-danger">전송하기</button>
+                    <button type="submit" class="btn btn-danger" >전송하기</button>
                     <button type="button" class="btn btn-warning"
                     	onclick="location.href='boardList.jsp';">리스트보기</button>
                     <button type="reset" class="btn btn-dark">Reset</button>

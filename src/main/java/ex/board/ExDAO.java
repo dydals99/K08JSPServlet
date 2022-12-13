@@ -62,6 +62,7 @@ public class ExDAO extends JDBConnect{
 				dto.setPostdate(rs.getDate("postdate"));
 				dto.setId(rs.getString("id"));
 				dto.setVisitcount(rs.getString("visitcount"));
+				dto.setRevisiondate(rs.getDate("revisiondate"));
 				
 				bbs.add(dto);
 			}
@@ -116,6 +117,7 @@ public class ExDAO extends JDBConnect{
 				dto.setId(rs.getString("id"));
 				dto.setVisitcount(rs.getString(6));
 				dto.setName(rs.getString("name"));
+				dto.setRevisiondate(rs.getDate("revisiondate"));
 			}
 		}
 		catch(Exception e) {
@@ -144,7 +146,7 @@ public class ExDAO extends JDBConnect{
 		
 		try {
 			String query = "UPDATE board SET "
-					+ "title = ?, content = ? "
+					+ "title = ?, content = ?, revisiondate = sysdate "
 					+ "where num = ?";
 			psmt = con.prepareStatement(query);
 			

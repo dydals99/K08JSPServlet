@@ -53,7 +53,17 @@ dao.close();
 					      <input type="text" class="form-control" 
 					      	value="<%=dto.getName() %>" name="name" style="width:300px;">
 					    </div>
-					    
+					    <div>
+						 <%
+                    	if(dto.getRevisiondate()!=null){
+                    	
+                    	%>
+                    	<input type="text" class="form-control" 
+				      	value="<%= dto.getRevisiondate()%> " name="date" style="width:300px;">
+	                   	<%
+	                    }
+	                   	%>	
+					    </div>
 					    <div class="mb-5">
 					    <button type="submit" class="btn btn-primary" style=" width:300px;"
 					     >수정하기</button>

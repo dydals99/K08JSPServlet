@@ -14,10 +14,13 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">    
 <script type="text/javascript">
-function validateForm(form) {  
-	if(form.id.value==""){
-		alert("작성자를 입력하세요");
-	   form.id.focus();
+function validateForm() {
+	
+	var form = document.getElementById("regiFrm");
+	
+	if(form.userId.value==""){
+		alert("아이디를 입력하세요");
+	   form.userId.focus();
 		return false;
 	}
     if (form.pass.value == "") {
@@ -25,11 +28,34 @@ function validateForm(form) {
         form.pass.focus();
         return false;
     }
+    if (form.pass.value != form.pass2.value) {
+        alert("비밀번호가 일치하지않습니다..");
+        form.pass.value="";
+        form.pass2.value="";
+        form.pass.focus();
+        return false;
+    }
+    
     if (form.name.value == "") {
         alert("사용자명을 입력하세요.");
         form.name.focus();
         return false;
     }
+    
+    form.submit();
+}
+//중복 확인 함수
+function idCheck(form){
+	
+	if(form.id.value==''){
+		alert("아이디 입력후 중복검사를 누르세요.")
+		form.id.focus();
+		return false;
+	}
+	/* else{
+		window.open()"IdCheck.jsp?id="+document.form.id.value,"","width=500, height=300");
+	} /*  */
+	
 }
 </script>   
 </head>
@@ -47,15 +73,22 @@ function validateForm(form) {
 				  <h2 style="text-align: center; font-weight: bold ">회원가입<i class="bi bi-door-open"></i></h2>
 				  <div class="container mt-3 d-flex justify-content-center" 
 				  	>
-					  <form action="ExmembershipProcess.jsp"
-					  	method="post" onsubmit="return validateForm(this);" name="member">
-					    <div class="mb-3" >
-					      <input type="text" class=" form-control"
-					      	placeholder="아이디" name="id" style="width:300px;">
-					    </div >
+					  <form action="ExmembershipProcess.jsp" id ="regiFrm"
+					  	method="post" name="member">
+						<div class="input-group mb-3">
+							<input type="text" class="form-control" placeholder="아이디"
+								name="userId" style="width:200px;">
+							<div class="input-group-append">
+								<button class= "btn btn-primary" type="button" name="id" onclick="idCheck(this.form);">중복확인</button>
+							</div>
+						</div> 
 					    <div class="mb-3">
 					      <input type="password" class="form-control" 
 					      	placeholder="비밀번호" name="pass" style="width:300px;">
+					    </div>
+			    	    <div class="mb-3">
+					      <input type="password" class="form-control" 
+					      	placeholder="비밀번호확인" name="pass2" style="width:300px;">
 					    </div>
 					    <div class="mb-3">
 					      <input type="text" class="form-control" 
@@ -63,7 +96,7 @@ function validateForm(form) {
 					    </div>
 					    
 					    <div class="mb-5">
-					    <button type="submit" class="btn btn-primary" style=" width:300px;"
+					    <button type="button" class="btn btn-primary" style=" width:300px;" onclick="validateForm();"
 					     >회원가입</button>
 					    <hr />
 					    </div>
