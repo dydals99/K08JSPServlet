@@ -13,7 +13,7 @@ public class MbDAO extends JDBConnect {
 	public MbDTO selectMember(String id) {
 
 		MbDTO mbto = new MbDTO();
-		String query = " SELECT id,pass,name "
+		String query = " SELECT id,pass,name,revisiondate "
 				+ "	FROM member "
 				+ " WHERE id = ? ";
 		try {
@@ -24,6 +24,7 @@ public class MbDAO extends JDBConnect {
 				mbto.setId(rs.getString("id"));
 				mbto.setPass(rs.getString("pass"));
 				mbto.setName(rs.getString("name"));
+				mbto.setRevisiondate(rs.getDate("revisiondate"));
 			}
 		} 
 		catch (Exception e) {

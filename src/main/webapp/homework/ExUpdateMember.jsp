@@ -53,13 +53,12 @@ dao.close();
 					      <input type="text" class="form-control" 
 					      	value="<%=dto.getName() %>" name="name" style="width:300px;">
 					    </div>
-					    <div>
-						 <%
+					   <div class="mb-3">
+						<%
                     	if(dto.getRevisiondate()!=null){
-                    	
                     	%>
-                    	<input type="text" class="form-control" 
-				      	value="<%= dto.getRevisiondate()%> " name="date" style="width:300px;">
+                    	  <input type="text" class="form-control" readonly
+					      	value="<%= dto.getRevisiondate()%>" name="date" style="width:300px;">
 	                   	<%
 	                    }
 	                   	%>	
@@ -73,7 +72,6 @@ dao.close();
 					</div>
 	            </div>
 		           <div class="row mt-3 mx-1">
-		          
 		           </div>
 	       </div>
 	   </div>
