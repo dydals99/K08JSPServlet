@@ -45,7 +45,7 @@
 				     }
 				  }
 				  </script>
-				  <h2 style="text-align: center; font-weight: bold ">TJOEUN LOGIN</h2>
+				  <h2 style="text-align: center; font-weight: bold "><i class="bi bi-emoji-heart-eyes"></i>TJOEUN LOGIN<i class="bi bi-emoji-heart-eyes"></i></h2>  
 				  <div class="container mt-3 d-flex justify-content-center" >
 					  <form action="ExLoginProcess.jsp" method="post" name="loginFrm"
 					   	onsubmit="return validateForm(this);"  >
