@@ -18,7 +18,7 @@
             alert("첨부파일은 필수 입력입니다.");
             return false;
         }
-    }
+    }  
 </script>
 <body>
     <h3>파일 업로드</h3>
