@@ -30,7 +30,7 @@
     파일업로드를 위한 form태그 작성시 필수사항
     	1. method 즉, 전송방식은 반드시 post로 지정해야한다.
     	2. enctype을 multipart/form-data로 지정해야한다.
-    일반적인 폼값 전송을 위해 enctype을 명시하지 않는 경우 
+    일반적인 폼값 전송을 위해 enctype을 명시하지 않는 경우   
     	request내장객체의 getParameter()로 폼값을 받을 수 있다.
     파일업로드를 위해 enctype을 위와같이 명시하는 경우 
     	request내장객체로는 폼값을 받을 수 없다. cos.jar 확장라이브러리
