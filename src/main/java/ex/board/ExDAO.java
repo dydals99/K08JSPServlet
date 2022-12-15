@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Vector;
 import javax.servlet.ServletContext;
 import common.JDBConnect;
+import model1.board.BoardDTO;
 
 public class ExDAO extends JDBConnect{
 	
@@ -153,7 +154,6 @@ public class ExDAO extends JDBConnect{
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
 			psmt.setString(3, dto.getNum());
-			//수정된 레코드의 갯수가 반환된다.
 			result = psmt.executeUpdate();
 		}
 		catch(Exception e) {
@@ -179,5 +179,44 @@ public class ExDAO extends JDBConnect{
 		}
 		return result;
 	}
-	
+	public List<ExDTO> selectListPage(Map<String, Object>map){
+		List<ExDTO> bbs = new Vector<ExDTO>();
+		
+		String query = " SELECT * FROM ( "
+				+ "SELECT Tb.* ,ROWNUM rNum FROM ( "
+				+ "SELECT * FROM board ";
+		
+		if(map.get("searchWord")!= null) {
+			query += "WHERE " + map.get("searchField") 
+				  + " LIKE '% " + map.get("searchWord") + "%' ";
+		}
+		query += " ORDER BY num DESC "
+				+ 	") Tb"  
+				+ " ) "
+				+ " WHERE rNum BETWEEN ? AND ? ";
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, map.get("start").toString());
+			psmt.setString(2, map.get("end").toString());
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				ExDTO dto = new ExDTO();
+				
+				dto.setNum(rs.getString("num"));
+				dto.setTitle(rs.getString("title"));
+				dto.setContent(rs.getString("content"));
+				dto.setPostdate(rs.getDate("postdate"));
+				dto.setId(rs.getString("id"));
+				dto.setVisitcount(rs.getString("visitcount"));
+				
+				bbs.add(dto);
+			}
+			
+		} 
+		catch (Exception e) {
+			System.out.println("게시물 조회 중 예외 발생");
+			e.printStackTrace();
+		}
+		return bbs;
+	}
 }

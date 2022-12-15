@@ -18,9 +18,9 @@ function validateForm() {
 	
 	var form = document.getElementById("regiFrm");
 	
-	if(form.userId.value==""){
+	if(form.id.value==""){
 		alert("아이디를 입력하세요");
-	   form.userId.focus();
+	   form.id.focus();
 		return false;
 	}
     if (form.pass.value == "") {
@@ -42,19 +42,23 @@ function validateForm() {
         return false;
     }
     
-    form.submit();
+    form.submit(); 
 }
 //중복 확인 함수
-function idCheck(form){
+function idCheck(){
+	var form = document.getElementById("regiFrm");
 	
 	if(form.id.value==''){
 		alert("아이디 입력후 중복검사를 누르세요.")
 		form.id.focus();
-		return false;
 	}
-	/* else{
-		window.open()"IdCheck.jsp?id="+document.form.id.value,"","width=500, height=300");
-	} /*  */
+	else{
+		
+		form.id.readOnly = true;
+		
+		open("IdCheck.jsp?id="+form.id.value,"","width=500, height=300");
+		
+	} 
 	
 }
 </script>   
@@ -77,9 +81,9 @@ function idCheck(form){
 					  	method="post" name="member">
 						<div class="input-group mb-3">
 							<input type="text" class="form-control" placeholder="아이디"
-								name="userId" style="width:200px;">
+								name="id" style="width:200px;">
 							<div class="input-group-append">
-								<button class= "btn btn-primary" type="button" name="id" onclick="idCheck(this.form);">중복확인</button>
+								<button class= "btn btn-primary" type="button" onclick="idCheck();">중복확인</button>
 							</div>
 						</div> 
 					    <div class="mb-3">
@@ -103,9 +107,6 @@ function idCheck(form){
 					  </form>
 					</div>
 	            </div>
-		           <div class="row mt-3 mx-1">
-		          
-		           </div>
 	       </div>
 	   </div>
     <div class="row border border-dark border-bottom-0 border-right-0 border-left-0"></div>

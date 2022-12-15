@@ -1,3 +1,4 @@
+<%@page import="utils.ListPage"%>
 <%@page import="ex.board.ExDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.HashMap"%>
@@ -14,15 +15,27 @@ Map<String, Object> param = new HashMap<String, Object>();
 String searchField = request.getParameter("searchField");
 String searchWord = request.getParameter("searchWord");
 if(searchWord != null){
-	/* Map컬렉션에 컬럼명과 검색어를 추가한다.  */
 	param.put("searchField",searchField);
 	param.put("searchWord",searchWord);
 }
-//Map컬렉션을 인수로 게시물의 갯수를 카운트한다.
 int totalCount = dao.selectCount(param);
-//목록에 출력할 게시물을 추출하여 반환받는다.
-List<ExDTO> boardLists = dao.selectList(param); 
-//자원해제 
+
+int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
+int blockPage = Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK"));
+int totalPage = (int)Math.ceil((double)totalCount / pageSize);
+
+int pageNum = 1;
+String pageTemp = request.getParameter("pageNum");
+if (pageTemp != null && !pageTemp.equals(""))
+   pageNum = Integer.parseInt(pageTemp);
+
+int start = (pageNum - 1) * pageSize + 1;
+int end = pageNum * pageSize;
+param.put("start", start);
+param.put("end", end);
+ 
+List<ExDTO> boardLists = dao.selectListPage(param); 
+
 dao.close();
 %>
 <!DOCTYPE html>
@@ -133,30 +146,11 @@ dao.close();
                     <button type="button" class="btn btn-warning" onclick="location.href='boardList.jsp';">리스트</button>
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="col">
-                    <!-- 페이지번호 부분 -->
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <a href="#" class="page-link"><i class='bi bi-skip-backward-fill'></i></a>
-                        </li>
-                        <li class="page-item">
-                            <a href="#" class="page-link"><i class='bi bi-skip-start-fill'></i></a>
-                        </li>
-                        <li class="page-item"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item">
-                            <a href="#" class="page-link"><i class='bi bi-skip-end-fill'></i></a>
-                        </li>
-                        <li class="page-item">
-                            <a href="#" class="page-link"><i class='bi bi-skip-forward-fill'></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+				 <div class="col d-flex justify-content-center">
+	              <%System.out.println("현재경로="+request.getRequestURI()); %>
+	              <%= ListPage.pagingStr(totalCount, pageSize, blockPage,  
+	                    pageNum, request.getRequestURI()) %>
+	            </div>
         </div>
     </div>
     <div class="row border border-dark border-bottom-0 border-right-0 border-left-0"></div>

@@ -37,4 +37,16 @@ public class JSFunction {
 		}
 		catch(Exception e) {}
 	}
+	public static void alertClose(String msg, JspWriter out) {
+		try {
+			String scirpt = ""
+					+ "<script>"
+					+"		alert('"+msg+"');"	
+					+"		self.close();"
+					+"</script>";
+			out.println(scirpt);
+		}
+		catch(Exception e) {}
+	}
+	
 }

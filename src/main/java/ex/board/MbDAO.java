@@ -33,6 +33,32 @@ public class MbDAO extends JDBConnect {
 		}
 		return mbto;
 	}
+	public MbDTO selectId(String id) {
+		
+		MbDTO mbto = new MbDTO();
+		String query = " SELECT id FROM member WHERE id = ? ";
+		
+		try {
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				mbto.setId(rs.getString("id"));
+				System.out.println(query);
+			}
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+			System.out.println("아이디 중복검사중 예외발생");
+			
+		}
+		
+		return mbto;
+	}
 	public int updateMember(MbDTO dto) {
 		
 		int result = 0;
@@ -78,4 +104,6 @@ public class MbDAO extends JDBConnect {
 		}
 		return result;
 	}
+	
+	
 }
