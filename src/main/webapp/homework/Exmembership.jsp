@@ -59,8 +59,8 @@ function idCheck(){
 		open("IdCheck.jsp?id="+form.id.value,"","width=500, height=300");
 		
 	} 
-	
 }
+
 </script>   
 </head>
 <body>

@@ -84,6 +84,7 @@ function deletePost() {
                    	<%
                     }
                    	%>	
+                   	
                     </td>
                 </tr>
                 <tr>

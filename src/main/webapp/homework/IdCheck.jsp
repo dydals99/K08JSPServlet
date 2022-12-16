@@ -18,15 +18,14 @@ dao.close();
  
 if(dto.getId() == null){
 	
-	JSFunction.alertClose("사용가능", out); 
+	JSFunction.alertClose("아이디 사용가능!!", out); 
 	
 }
 else{
 	
-	JSFunction.alertClose("불가능", out);
+	JSFunction.alertBack("아이디 사용불가능..", out);
 }
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,16 +35,21 @@ else{
 <body>
 <script type="text/javascript">
 function IdUse() {
+	var form = document.getElementById("overlap");
+	form.retype_id.value ='';
+	opener.document.member.id.value =
+        document.overlapFrm.retype_id.value;
 	
 	
+	self.close();
 	
 }
-
 </script>
 <h3>아이디 중복확인</h3> 
-	<form name="overlapFrm">
-        <input type="text" size="20" value="<%=request.getParameter("id") %>">
-        <input type="button" name="id" value="확인" onclick="IdUse();">
+	<form name="overlapFrm" id="overlap">
+        <input type="text" size="20" name="retype_id"
+        	value="<%=request.getParameter("id") %>">
+        <input type="button" name="userid" value="확인하기" onclick="IdUse();">
     </form>
 </body>
 </html>
