@@ -65,7 +65,7 @@
 	            <!-- 제목 -->
 	            <td align="left"> 
 	            	<!-- 제목을 클릭할 경우 내용보기 페이지로 이동한다.  -->
-	                <a href="../mvcboard/View.do?idx=${ row.idx }">
+	                <a href="../mvcboard/view.do?idx=${ row.idx }">
 	                	${ row.title }</a> 
 	            </td>
 	            <!-- 작성자 아이디 -->
